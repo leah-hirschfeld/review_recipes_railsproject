@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
         end
 
         if user.valid?
+            session[:user_id] = user.id
             redirect_to new_recipe_path
         else
             flash[:message] = user.errors.full_messages.join("")
