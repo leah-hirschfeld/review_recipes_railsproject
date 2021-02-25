@@ -4,12 +4,28 @@ class ReviewsController < ApplicationController
         @review = Review.new
     end
 
-    def index
+    def create
+        @review = Review.new(review_params)
+        if @review.save
+            redirect_to review_path(@review)
+        else
+            render :new
+        end
     end
 
-    def create
+    def show
+        @review = Review.find(params[:id])
     end
     
     def edit
     end
+
+    def index
+        @reviews = Review.all
+    end
+
+    private
+        def review_params
+            params.require(:review).permit(:stars, :comment)
+        end
 end

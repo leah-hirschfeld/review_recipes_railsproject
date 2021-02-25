@@ -1,2 +1,15 @@
 <h2> Please input your recipe below: </h2> <br>
 <%= render "form", recipe: @recipe %>
+
+<% if @recipe.errors.any? %>
+<div id = "error_explanation">
+    <h2> The <%= pluralize(@recipe.errors.count, "error") %> 
+        below is why the recipe could not be saved: </h2>
+    
+    <ul>
+    <% @recipe.errors.full_messages.each do |error| %>
+    <li><%= error %> </li>
+    <% end %>
+    </ul>
+    </div>
+<% end %>

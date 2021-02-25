@@ -1,0 +1,11 @@
+<h1> Here's a list of all the reviews! </h1>
+
+<ul>
+<% @reviews.each do |review| %>
+<li> <%= link_to(review.recipes.title, review_path(review.id)) %> </tr> <br>
+    <br>
+<% end %>
+</ul>
+
+<%= link_to(New Review, new_review_path(reviews)) %> <br>
+<%= link_to(New Recipe, new_recipe_path(recipe)) %>
