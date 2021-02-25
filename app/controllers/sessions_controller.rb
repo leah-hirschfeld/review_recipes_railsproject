@@ -1,16 +1,4 @@
 class SessionsController < ApplicationController
-    
-    def omniauth
-        user = User.create_from_omniauth(auth)
-
-        if user.valid?
-            session[:user_id] = user.id
-            redirect_to new_recipe_path
-        else
-            flash[:message] = user.errors.full_messages.join("")
-            redirect_to recipes_path
-        end
-    end
 
     def new
     end
@@ -29,6 +17,18 @@ class SessionsController < ApplicationController
     def destroy
         session.delete[:user_id]
         redirect_to '/login'
+    end
+
+    def omniauth
+        user = User.create_from_omniauth(auth)
+
+        if user.valid?
+            session[:user_id] = user.id
+            redirect_to new_recipe_path
+        else
+            flash[:message] = user.errors.full_messages.join("")
+            redirect_to recipes_path
+        end
     end
 
     private

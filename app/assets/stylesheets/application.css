@@ -16,6 +16,6 @@
 
  .field_with_errors {
      padding: 2px;
-     background: rebeccapurple;
+     background-color: rebeccapurple;
      display: table;
  }
