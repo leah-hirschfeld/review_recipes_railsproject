@@ -1,0 +1,10 @@
+<h1> Add a review to a recipe! </h1>
+
+<%= form_for(@review) do |f| %>
+    <%= f.label :"Score 1 (lowest) to 5 (highest):" %> <br>
+    <%= f.number_field :stars %> <br> <br>
+
+    <%= f.label :"comment:" %> <br>
+    <%= f.text_area :comment %>
+    
+<% end %>
