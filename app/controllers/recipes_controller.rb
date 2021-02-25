@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-    before_action :recipe_find, only: [:show, :update, :edit, :destroy]
+    before_action :recipe_find, :redirect_if_not_owner, only: [:show, :update, :edit, :destroy]
 
     def index
         @recipes = Recipe.all
@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
     end
     
     def create
-        @recipe = Recipe.new(recipe_params)
+        #@recipe = Recipe.new(recipe_params)
         @recipe = current_user.recipes.build(recipe_params)
         if @recipe.valid?
             @recipe.save
@@ -25,6 +25,7 @@ class RecipesController < ApplicationController
     end
 
     def edit
+        @recipe = Recipe.find(params[:id])
     end
 
     def update
@@ -49,5 +50,11 @@ class RecipesController < ApplicationController
 
     def recipe_params
         params.require(:recipe).permit(:title, :ingredients, :instructions)
+    end
+
+    def redirect_if_not_owner
+        if current_user != @recipe.user
+            redirect_to user_path(current_user), alert: "Not your recipe!"
+        end
     end
 end
