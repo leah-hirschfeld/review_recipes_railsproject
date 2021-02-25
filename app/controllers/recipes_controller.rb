@@ -3,7 +3,6 @@ class RecipesController < ApplicationController
 
     def index
         @recipes = Recipe.all
-        @recipe = Recipe.new
     end
 
     def show
@@ -25,7 +24,6 @@ class RecipesController < ApplicationController
     end
 
     def edit
-        @recipe = Recipe.find(params[:id])
     end
 
     def update
@@ -53,7 +51,7 @@ class RecipesController < ApplicationController
     end
 
     def redirect_if_not_owner
-        if current_user != @recipe.user
+        if current_user != @recipe.users
             redirect_to user_path(current_user), alert: "Not your recipe!"
         end
     end
