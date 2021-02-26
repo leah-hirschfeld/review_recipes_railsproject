@@ -27,6 +27,6 @@ class ReviewsController < ApplicationController
 
     private
         def review_params
-            params.require(:review).permit(:stars, :comment)
+            params.require(:review).permit(:stars, :comment, recipes_attributes: [:title, :ingredients, :instructions])
         end
 end

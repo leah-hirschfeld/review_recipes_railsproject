@@ -1,15 +1,16 @@
 class RecipesController < ApplicationController
     before_action :recipe_find, :redirect_if_not_owner, only: [:show, :update, :edit, :destroy]
 
+    def new
+        @recipe = Recipe.new
+        @recipes.reviews.build
+    end
+
     def index
         @recipes = Recipe.all
     end
 
     def show
-    end
-    
-    def new
-        @recipe = Recipe.new
     end
     
     def create
@@ -47,7 +48,7 @@ class RecipesController < ApplicationController
     end
 
     def recipe_params
-        params.require(:recipe).permit(:title, :ingredients, :instructions)
+        params.require(:recipe).permit(:title, :ingredients, :instructions, reviews_attributes: [:stars, :comment])
     end
 
     def redirect_if_not_owner
