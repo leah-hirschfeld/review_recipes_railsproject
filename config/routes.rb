@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  resources :reviews
+  
   resources :recipes, only: [:new, :create, :show, :index] do 
-    resources :reviews
+    resources :reviews, only: [:index, :new, :create]
   end
 
 

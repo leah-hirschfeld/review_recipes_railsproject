@@ -32,6 +32,11 @@ class ReviewsController < ApplicationController
     end
 
     def index
+        if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
+            @reviews = @recipe.reviews
+        else
+            @reviews = Review.all
+        end
     end
 
     def destroy
