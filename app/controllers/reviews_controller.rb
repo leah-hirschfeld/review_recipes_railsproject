@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     end
 
     def create
-        @review = Review.new(review_params)
+        @review = current_user.shoes.build(review_params)
         if @review.save
             redirect_to review_path(@review)
         else
@@ -45,11 +45,11 @@ class ReviewsController < ApplicationController
         end
 
         def review_params
-            params.require(:review).permit(:stars, :comment, :review_id, recipes_attributes: [:title, :ingredients, :instructions])
+            params.require(:review).permit(:stars, :comment, :review_id, :user_id, recipes_attributes: [:title, :ingredients, :instructions])
         end
 
         def redirect_if_not_owner
-            if current_user != @review.users
+            if current_user != @review.user
                 redirect_to user_path(current_user), alert: "Not your recipe!"
             end
         end

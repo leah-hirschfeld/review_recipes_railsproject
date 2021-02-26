@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-    before_action :recipe_find, :redirect_if_not_owner, only: [:show, :update, :edit, :destroy]
+    before_action :recipe_find, only: [:show, :update, :edit, :destroy]
 
     def new
         @recipe = Recipe.new
@@ -51,9 +51,4 @@ class RecipesController < ApplicationController
         params.require(:recipe).permit(:title, :ingredients, :instructions, reviews_attributes: [:stars, :comment])
     end
 
-    def redirect_if_not_owner
-        if current_user != @recipe.users
-            redirect_to user_path(current_user), alert: "Not your recipe!"
-        end
-    end
 end

@@ -3,8 +3,6 @@
 <%= @recipe.title %> <br>
 <%= @recipe.ingredients %> <br>
 <%= @recipe.instructions %> <br>
-<%= @recipe.review.stars %> <br>
-<%= @recipe.review.comment %> <br>
 
-<%= link_to("Edit Recipe", edit_recipe_path(@recipe.id) %> <br>
-<%= link_to("Delete Recipe", recipe_path(@recipe.id), method: 'delete' %> <br>
+<%= link_to("Edit Recipe", edit_recipe_path(@recipe.id)) %> <br>
+<%= link_to("Delete Recipe", recipe_path(@recipe.id), method: 'delete') %> <br>
