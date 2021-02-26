@@ -1,8 +1,8 @@
-<h1> Here's a list of all the reviews! </h1>
+<h1> <%= display_header(@recipe) %> </h1>
 
 <ul>
 <% @reviews.each do |review| %>
-<li> <%= link_to(review.recipes.title, review_path(review.id)) %> </tr> <br>
+<li> <%= link_to(review.comment, review_path(review.id)) %> </tr> <br>
     <br>
 <% end %>
 </ul>

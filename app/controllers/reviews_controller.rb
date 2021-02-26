@@ -2,12 +2,16 @@ class ReviewsController < ApplicationController
     before_action :recipe_find, :redirect_if_not_owner, only: [:show, :update, :edit, :destroy]
 
     def new
-        @review = Review.new
-        @review.build_recipe
+        if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
+            @reviews = @recipe.reviews
+        else
+            @review = Review.new
+            @review.build_recipe
+        end
     end
 
     def create
-        @review = current_user.shoes.build(review_params)
+        @review = current_user.reviews.build(review_params)
         if @review.save
             redirect_to review_path(@review)
         else
