@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
 
     def new
         @review = Review.new
+        @review.build_recipe
     end
 
     def create

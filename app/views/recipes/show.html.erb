@@ -1,0 +1,10 @@
+<h1> Recipe Info: </h1>
+
+<%= @recipe.title %> <br>
+<%= @recipe.ingredients %> <br>
+<%= @recipe.instructions %> <br>
+<%= @recipe.review.stars %> <br>
+<%= @recipe.review.comment %> <br>
+
+<%= link_to("Edit Recipe", edit_recipe_path(@recipe.id) %> <br>
+<%= link_to("Delete Recipe", edit_recipe_path(@recipe.id) %> <br>
