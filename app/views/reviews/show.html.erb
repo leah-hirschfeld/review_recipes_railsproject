@@ -5,3 +5,6 @@
 <%= @review.recipe.instructions %> <br>
 <%= @review.stars %> <br>
 <%= @review.comment %> <br>
+
+<%= link_to("Edit Review", edit_review_path(@review.id) %> <br>
+<%= link_to("Delete Review", edit_review_path(@review.id) %> <br>

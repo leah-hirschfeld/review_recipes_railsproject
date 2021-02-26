@@ -1,0 +1,22 @@
+<%= form_for(@review) do |f| %>
+    <%= f.label :"Score 0 (lowest) to 5 (highest):" %> <br>
+    <%= f.number_field :stars, min: 0, max: 5, step: 1 %> <br> <br>
+
+    <%= f.label :"comment:" %> <br>
+    <%= f.text_area :comment %> <br>
+
+    <hr>
+    <%= f.fields_for :recipes do |r| %> 
+        <%= r.label :"Recipe title:" %> 
+        <%= r.text_field :title %> <br> <br>
+
+        <%= r.label :"List of ingredients:" %> 
+        <%= r.text_field :ingredients %> <br> <br>
+
+        <%= r.label :"Recipe instructions:" %> <br>
+        <%= r.text_area :instructions %> <br>
+    <% end %>
+
+    <%= f.submit %>
+    
+<% end %>
