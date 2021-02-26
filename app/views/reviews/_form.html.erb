@@ -8,12 +8,15 @@
     <hr>
     <%= f.fields_for :recipes do |r| %> 
         <%= r.label :"Recipe title:" %> 
+        <%= r.collection_select :recipe_id, Recipe.all, :id, :title, prompt: true %>
         <%= r.text_field :title %> <br> <br>
 
         <%= r.label :"List of ingredients:" %> 
+        <%= r.collection_select :recipe_id, Recipe.all, :id, :ingredients, prompt: true %>
         <%= r.text_field :ingredients %> <br> <br>
 
         <%= r.label :"Recipe instructions:" %> <br>
+        <%= r.collection_select :recipe_id, Recipe.all, :id, :instructions, prompt: true %>
         <%= r.text_area :instructions %> <br>
     <% end %>
 

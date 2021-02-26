@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
 
     def new
         @recipe = Recipe.new
-        @recipes.reviews.build
+        @recipe.reviews.build
     end
 
     def index
@@ -39,7 +39,7 @@ class RecipesController < ApplicationController
 
     def destroy
         recipe_find.destroy
-        redirect_to recipes_url
+        redirect_to recipes_path
     end
 
     private

@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+    before_action :recipe_find, :redirect_if_not_owner, only: [:show, :update, :edit, :destroy]
 
     def new
         @review = Review.new
@@ -15,18 +16,41 @@ class ReviewsController < ApplicationController
     end
 
     def show
-        @review = Review.find(params[:id])
     end
     
     def edit
     end
 
-    def index
-        @reviews = Review.all
+    def update
+        @review.update(review_params)
+        if @review.valid?
+            @review.save
+            redirect_to review_path(@review)
+        else
+            render :edit
+        end
     end
 
+    def index
+    end
+
+    def destroy
+        review_find.destroy
+        redirect_to reviews_path
+    end 
+
     private
+        def review_find
+            @review = Review.find(params[:id])
+        end
+
         def review_params
-            params.require(:review).permit(:stars, :comment, recipes_attributes: [:title, :ingredients, :instructions])
+            params.require(:review).permit(:stars, :comment, :review_id, recipes_attributes: [:title, :ingredients, :instructions])
+        end
+
+        def redirect_if_not_owner
+            if current_user != @review.users
+                redirect_to user_path(current_user), alert: "Not your recipe!"
+            end
         end
 end
