@@ -1,5 +1,6 @@
 <%= form_for @recipe do |f| %>
     <%= f.label :"Recipe title:" %> 
+    <%= f.collection_select :recipe_id, Recipe.all, :id, :title, prompt: true %>
     <%= f.text_field :title %> <br> <br>
 
     <%= f.label :"List of ingredients:" %> 
@@ -8,8 +9,8 @@
     <%= f.label :"Recipe instructions:" %> <br>
     <%= f.text_area :instructions %> <br>
 
-    <%= f.label :"Review:" %> <br>
-    <%= f.fields_for :review do |r| %> 
+    <%= f.label :review %> <br>
+        <%= f.fields_for :review do |r| %> 
         <%= r.label :"Score 0 (lowest) to 5 (highest):" %> <br>
         <%= r.number_field :stars,  min: 0, max: 5, step: 1%> <br> <br>
 

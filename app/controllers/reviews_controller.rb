@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
 
     def new
         if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
-            @reviews = @recipe.reviews
+            @review = @recipe.reviews.build
         else
             @review = Review.new
             @review.build_recipe
@@ -54,7 +54,7 @@ class ReviewsController < ApplicationController
         end
 
         def review_params
-            params.require(:review).permit(:stars, :comment, :review_id, :user_id, recipes_attributes: [:title, :ingredients, :instructions])
+            params.require(:review).permit(:stars, :comment, recipes_attributes: [:title, :ingredients, :instructions])
         end
 
         def redirect_if_not_owner
