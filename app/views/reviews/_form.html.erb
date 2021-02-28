@@ -1,4 +1,6 @@
 <%= form_for([@recipe, @review]) do |f| %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :recipe_id, :value => @review.recipe_id %>
     <%= f.label :"Score 0 (lowest) to 5 (highest):" %> <br>
     <%= f.number_field :stars, min: 0, max: 5, step: 1 %> <br> <br>
 

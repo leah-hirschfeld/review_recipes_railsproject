@@ -3,12 +3,14 @@
 Title: <%= @recipe.title %> <br>
 Ingredients: <%= @recipe.ingredients %> <br>
 Instructions: <%= @recipe.instructions %> <br>
-<ul>
-<%= @recipe.reviews.each do |review| %> <br>
-    <li> Comments: <%= review.comment %> </li> <br>
-    Score 0 (lowest) to 5 (highest): <%= review.stars %> <br>
-<% end %>
-</ul>
+
+Reviews:
+
+<ul><% @recipe.reviews.each do |review| %> <br>
+    <li> Comments: <%= review.comment %> </li>
+    <li> Score 0 (lowest) to 5 (highest): <%= review.stars %> </li>
+<% end %> </ul>
+<br>
 
 
 <%= link_to("Make a new review", new_recipe_review_path(@recipe.id))%> <br>
