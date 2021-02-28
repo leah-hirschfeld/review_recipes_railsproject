@@ -5,4 +5,9 @@ class Recipe < ApplicationRecord
 
     validates :title, presence: true, uniqueness: true
     validates :ingredients, :instructions, presence: true
+    
+    def self.ordered_alphabetically
+        self.order(title: :asc)
+    end
+
 end

@@ -8,4 +8,5 @@ class Review < ApplicationRecord
     def recipes_attributes=(attr)
         self.recipe = Recipe.find_or_create_by(title: attr[:title])
     end
+
 end
