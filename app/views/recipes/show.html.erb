@@ -1,12 +1,12 @@
 <h1> Recipe Info: </h1>
 
-<%= @recipe.title %> <br>
-<%= @recipe.ingredients %> <br>
-<%= @recipe.instructions %> <br>
+Title: <%= @recipe.title %> <br>
+Ingredients: <%= @recipe.ingredients %> <br>
+Instructions: <%= @recipe.instructions %> <br>
 <ul>
 <%= @recipe.reviews.each do |review| %> <br>
-    <li> <%= review.stars %> </li> <br>
-    <%= review.comment %> <br>
+    <li> Comments: <%= review.comment %> </li> <br>
+    Score 0 (lowest) to 5 (highest): <%= review.stars %> <br>
 <% end %>
 </ul>
 

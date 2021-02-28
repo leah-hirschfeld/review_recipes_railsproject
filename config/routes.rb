@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :reviews
   
-  resources :recipes, only: [:new, :create, :edit, :show, :index] do 
+  resources :recipes, only: [:new, :create, :edit, :show, :index, :update] do 
     resources :reviews, only: [:index, :new, :create]
   end
 

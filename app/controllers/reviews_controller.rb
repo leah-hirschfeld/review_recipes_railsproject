@@ -54,7 +54,7 @@ class ReviewsController < ApplicationController
         end
 
         def review_params
-            params.require(:review).permit(:stars, :comment, recipes_attributes: [:title, :ingredients, :instructions])
+            params.require(:review).permit(:stars, :comment, :user_id, :recipe_id, recipes_attributes: [:title, :ingredients, :instructions, :user_id])
         end
 
         def redirect_if_not_owner

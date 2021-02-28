@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Recipe.create(title: "Bagels", ingredients: "flour, water, yeast", instructions: "Combine and shape. Boil and bake.")
+Recipe.create(title: "Bagels 2", ingredients: "flour, water, yeast", instructions: "Combine and shape. Boil and bake.")
 Review.create(stars: 5, comment: "Best bagel recipe ever!")
 User.create(username: "test", email: "test0@aol.com", password: "password")
