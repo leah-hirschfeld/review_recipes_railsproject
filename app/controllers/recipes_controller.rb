@@ -14,7 +14,6 @@ class RecipesController < ApplicationController
     end
     
     def create
-        #@recipe = Recipe.new(recipe_params)
         @recipe = current_user.recipes.build(recipe_params)
         if @recipe.valid?
             @recipe.save
