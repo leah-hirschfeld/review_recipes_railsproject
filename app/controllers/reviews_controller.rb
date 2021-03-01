@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-    before_action :recipe_find, :redirect_if_not_owner, only: [:show, :update, :edit, :destroy]
+    before_action :review_find, :redirect_if_not_owner, only: [:show, :update, :edit, :destroy]
 
     def new
         if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])

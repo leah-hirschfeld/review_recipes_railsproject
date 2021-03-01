@@ -8,7 +8,7 @@ Reviews:
 
 <ul><% @recipe.reviews.each do |review| %> <br>
     <li> Comments: <%= review.comment %> </li>
-    <li> Score 0 (lowest) to 5 (highest): <%= review.stars %> </li>
+    <li> Score: <%= review.stars %> </li>
 <% end %> </ul>
 <br>
 
