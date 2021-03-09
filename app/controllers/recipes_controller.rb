@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
     end
 
     def index
-        @recipes = Recipe.all
+        @recipes = Recipe.all.ordered_alphabetically
     end
 
     def show

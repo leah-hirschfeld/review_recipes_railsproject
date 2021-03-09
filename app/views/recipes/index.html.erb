@@ -2,7 +2,7 @@
 <h1> Welcome to your recipe book! </h1> <br>
 
 <ul>
-<% @recipes.ordered_alphabetically.each do |recipe| %>
+<% @recipes.each do |recipe| %>
  <li> <%= link_to(recipe.title, recipe_path(recipe)) %> </li> <br>
     
 <% end %>
