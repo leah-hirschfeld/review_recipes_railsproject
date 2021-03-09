@@ -3,7 +3,7 @@ module ReviewsHelper
         if recipe
             tag.h1("All #{recipe.title}'s Reviews")
         else
-            tag.h1("All the Reviews")
+            tag.h2("All the Reviews")
         end
     end
 end

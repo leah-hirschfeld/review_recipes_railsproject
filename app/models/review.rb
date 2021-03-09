@@ -9,8 +9,4 @@ class Review < ApplicationRecord
         self.recipe = Recipe.find_or_create_by(title: attr[:title])
     end
 
-   def self.ordered_alphabetically
-        self.order(title: :asc)
-    end
-
 end
