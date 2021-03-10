@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get '/reviews/top_rated', to: 'reviews#top_rated'
+  
   resources :reviews
   
   resources :recipes do 

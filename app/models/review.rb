@@ -9,4 +9,8 @@ class Review < ApplicationRecord
         self.recipe = Recipe.find_or_create_by(title: attr[:title])
     end
 
+    def self.top_rated
+        self.order(stars: :desc)
+    end
+
 end

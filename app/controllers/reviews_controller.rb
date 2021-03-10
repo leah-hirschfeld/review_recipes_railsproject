@@ -15,6 +15,7 @@ class ReviewsController < ApplicationController
         if @review.save
             redirect_to review_path(@review)
         else
+            #@recipe = RRecipe.find_by_id(params[:recipe_id]) if (params[:recipe_id])
             render :new
         end
     end
@@ -43,6 +44,10 @@ class ReviewsController < ApplicationController
         end
     end
 
+    def top_rated
+        @reviews = Review.all.top_rated 
+    end
+
     def destroy
         review_find.destroy
         redirect_to reviews_path
@@ -62,4 +67,5 @@ class ReviewsController < ApplicationController
                 redirect_to user_path(current_user), alert: "Not your recipe!"
             end
         end
+
 end
